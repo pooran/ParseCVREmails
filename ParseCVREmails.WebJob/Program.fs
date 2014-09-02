@@ -18,7 +18,7 @@ let findUrl text =
 
 //let Download ([<QueueTriggerAttribute(queueName="test")>] downloadUrl : string, [<Blob("downloaded-files/download", FileAccess.Write)>]output : System.IO.Stream) = 
  
-let Download ([<QueueTriggerAttribute(queueName="test")>] downloadUrl : string, binder : IBinder ) = 
+let Download ([<QueueTriggerAttribute(queueName="emails")>] downloadUrl : string, binder : IBinder ) = 
     async {
         let output = binder.Bind<Stream>(new BlobAttribute("downloaded-files/"+(downloadUrl.Split([|'/'|]) |> Seq.last),FileAccess.Write))
         let handler = new HttpClientHandler()
